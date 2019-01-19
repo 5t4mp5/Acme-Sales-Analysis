@@ -59,7 +59,9 @@ const products = [
       userId: 3
     }
   ];
+
 debugger;
+
 function productsPurchased(orders, products){
   return products.filter(product => 
     orders.some(order => order.productId === product.id)  
@@ -77,4 +79,10 @@ function topSellingProductByQuantity(orders, products){
   });
 
   return products.sort((a, b) => a.total > b.total ? -1 : 1)[0];
+}
+
+function usersWithOrders(users, orders){
+  return users.filter(user => {
+    return orders.some(order => order.userId === user.id);
+  });
 }
