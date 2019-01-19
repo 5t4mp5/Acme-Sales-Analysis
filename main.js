@@ -31,8 +31,6 @@ const products = [
     }
   ];
   
-  // productId matches up with product in products
-  // userId matches up with user in users
   const orders = [
     {
       id: 1,
@@ -60,17 +58,15 @@ const products = [
     }
   ];
 
-debugger;
-
 function productsPurchased(orders, products){
     output = products.filter(product => 
     orders.some(order => order.productId === product.id)  
   );
   output.forEach(prod => {
-    console.log(`Product ID: ${prod.id}
-Name: ${prod.name}
-Price: ${prod.price}
-`)
+    console.log(`Product ID: ${prod.id}`);
+    console.log(`Name: ${prod.name}`);
+    console.log(`Price: ${prod.price}`);
+    console.log('');
   });
 }
 
@@ -84,9 +80,10 @@ function topSellingProductByQuantity(orders, products){
   });
 
   output = (products.sort((a, b) => a.total > b.total ? -1 : 1)[0]);
-  console.log(`Product ID: ${output.id}
-Name: ${output.name}
-Price: ${output.price}`)
+  console.log(`Product ID: ${output.id}`);
+  console.log(`Name: ${output.name}`);
+  console.log(`Price: ${output.price}`);
+  console.log(`Quantity Sold: ${output.total}`);
 }
 
 function usersWithOrders(users, orders){
