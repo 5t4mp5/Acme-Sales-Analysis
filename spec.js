@@ -26,3 +26,19 @@ describe('productsPurchased', () => {
           }]);
     });
 });
+
+describe('topSellingProductByQuantity', () => {
+    it('is a function', () => {
+        expect(typeof topSellingProductByQuantity).toEqual('function');
+    });
+
+    it('returns an object that is not an array', () => {
+        expect(typeof topSellingProductByQuantity(orders, products)).toEqual('object');
+        expect(Array.isArray(topSellingProductByQuantity(orders, products))).toEqual(false);
+    });
+
+    it('returns the product that sold the most by qty', () => {
+        expect(topSellingProductByQuantity(orders, products)).toEqual({id: 5, name: 'bazz', price: 1, total: 213});
+    });
+});
+

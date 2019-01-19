@@ -59,9 +59,22 @@ const products = [
       userId: 3
     }
   ];
-
+debugger;
 function productsPurchased(orders, products){
   return products.filter(product => 
     orders.some(order => order.productId === product.id)  
   );
+}
+
+function topSellingProductByQuantity(orders, products){
+  products.forEach(product => {
+    if(!product.total) product.total = 0;
+
+    product.total += orders.reduce((acc, order) => {
+      return order.productId === product.id ? acc + order.quantity * product.price
+      : acc;
+    }, 0);
+  });
+
+  return products.sort((a, b) => a.total > b.total ? -1 : 1)[0];
 }
